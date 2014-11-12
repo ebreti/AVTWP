@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Avtwp by ebreti</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Avtwp</h1>
+        <p>ATV Water Presentation</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/ebreti/AVTWP" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ebreti/AVTWP/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ebreti/AVTWP/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="water-consumption-by-households-in-associação-vila-tijuca--" class="anchor" href="#water-consumption-by-households-in-associa%C3%A7%C3%A3o-vila-tijuca--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Water consumption by households in Associação Vila Tijuca  </h1>
+
+<p>author: fmarianoc<br>
+date: November 12th, 2014</p>
+
+<h1>
+<a id="situation" class="anchor" href="#situation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Situation</h1>
+
+<ul>
+<li>One vila with 21 houses and one common area. </li>
+<li>22 water meters for internal control.<br>
+</li>
+<li>One external water meter used by the concessionaire for billing.<br>
+</li>
+<li>One limit of 10500 liters per day to pay the minimal fee.<br>
+</li>
+<li>The limit was extrapolated during the World Cup.<br>
+</li>
+<li>Unbalanced consumption among the households.<br>
+</li>
+<li>Need to charge wasters.<br>
+</li>
+</ul>
+
+<h1>
+<a id="first-attempt" class="anchor" href="#first-attempt" aria-hidden="true"><span class="octicon octicon-link"></span></a>First Attempt</h1>
+
+<ul>
+<li>Data collected in one Google Drive spreadsheet and downloaded to DropBox folder.</li>
+<li>Knitr app to generate graph of consumption by water meter and ranking of households.<br>
+</li>
+<li>15 consecutive daily records to map consumption by household.<br>
+</li>
+<li>Emails sent to households to show the consumption map.<br>
+</li>
+<li>Weekly records to control the vila's consumption.<br>
+</li>
+</ul>
+
+<h1>
+<a id="shiny-app" class="anchor" href="#shiny-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shiny App</h1>
+
+<ul>
+<li>Combo box to select water meter.<br>
+</li>
+<li>Submit button to show graph of consumption of water meter selected.<br>
+</li>
+<li>Minimal documentation at front end.<br>
+</li>
+<li>Link to complete documentation in GitHub.<br>
+</li>
+<li>Data stored in Amazon's AWS S3.<br>
+</li>
+</ul>
+
+<h1>
+<a id="data" class="anchor" href="#data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data</h1>
+
+<pre lang="r,"><code>file &lt;- "http://s3-sa-east-1.amazonaws.com/ebreti/avt/consumptionAVT.csv"
+consumo &lt;- read.csv(file)
+consumo$dataleitura &lt;- as.Date(as.character(consumo$dataleitura), format("%d/%m/%Y"))
+</code></pre>
+
+<ul>
+<li>
+<code>r dim(consumo)[1]</code> measures of <code>r dim(consumo)[2]</code> variables.</li>
+<li>variable names: <code>r colnames(consumo)</code>.</li>
+<li>measures of external water meter: <code>r table(consumo$unidade)[1]</code>.</li>
+<li>measures of each internal water meter: <code>r table(consumo$unidade)[2]</code>.</li>
+<li>19 * 22 + 31 = 449 OK!<br>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ebreti">ebreti</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
